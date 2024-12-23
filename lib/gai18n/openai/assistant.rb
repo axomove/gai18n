@@ -7,7 +7,6 @@ module GAI18n
                         'to help with internationalization.'].join ' '
           instructions = "You are a French translator specialized in medical translations. You have been tasked with translating the French source to the target language. You will be given a key and a source string. You will be asked to translate the source string to the target language. Once translated, please call the translation.submit function with the key, translated string, and the target language. If you are asked to translate into multiple target languages, please call the translation.submit function for each target language. You must ALWAYS restitute double quotes and single quotes from the source file into the target file."
           openai_client = GAI18n.config.openai_client
-          openai_client.add_headers("OpenAI-Beta: assistants=v2")
           model = GAI18n.config.model
           parameters = {
             model: model,
