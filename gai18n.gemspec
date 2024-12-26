@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 3.0.0'
 
-  s.add_dependency 'ruby-openai', '~> 6.2'
+  s.add_dependency 'ruby-openai', '~> 7.3'
   s.add_dependency 'git', '~> 1.19'
 
   s.add_development_dependency 'bundler'
