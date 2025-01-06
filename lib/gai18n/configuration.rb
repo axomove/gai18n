@@ -8,6 +8,9 @@ module GAI18n
     def openai_client
       args = {
         access_token: openai_secret_key,
+        extra_headers: {
+          "OpenAI-Beta" => "assistants=v2"
+        }
       }
       @openai_client ||= ::OpenAI::Client.new args
     end
