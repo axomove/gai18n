@@ -15,27 +15,27 @@ module GAI18n
             instructions: instructions,
             tools: [
               {
-                "type": "function",
-                "function": {
-                  "name": "translation.submit",
-                  "description": "Submit a translation",
-                  "parameters": {
-                    "type": "object",
-                    "properties": {
-                      "key": {
-                        "type": "string",
-                        "description": "The given key that's associated to the string needing translation."
+                type: "function",
+                function: {
+                  name: "translation_submit",
+                  description: "Submit a translation",
+                  parameters: {
+                    type: "object",
+                    properties: {
+                      key: {
+                        type: "string",
+                        description: "The given key that's associated to the string needing translation."
                       },
-                      "translation": {
-                        "type": "string",
-                        "description": "The translated string."
+                      translation: {
+                        type: "string",
+                        description: "The translated string."
                       },
-                      "language": {
-                        "type": "string",
-                        "description": "The language of the translation."
+                      language: {
+                        type: "string",
+                        description: "The language of the translation."
                       }
                     },
-                    "required": ["key", "translation", "language"]
+                    required: ["key", "translation", "language"]
                   }
                 }
               }
