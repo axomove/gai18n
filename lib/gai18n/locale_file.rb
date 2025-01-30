@@ -1,5 +1,6 @@
 module GAI18n
   class LocaleFile
+    require 'json'
     extend Forwardable
 
     attr_reader :locale, :assistant_id, :skip_keys
