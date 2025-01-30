@@ -88,7 +88,7 @@ module GAI18n
     def content
       @content ||= begin
         raw_content = if File.exist?(path)
-          raw_content = if FileYAML.load_file(path)
+          raw_content = FileYAML.load_file(path)
           raw_content.respond_to?(:[]) ? raw_content[root_key.to_s] : {}
         else
           {}
