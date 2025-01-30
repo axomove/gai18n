@@ -80,7 +80,11 @@ module GAI18n
 
     def source_content
       @source_content ||= begin
-        raw = YAML.load_file(source_path)[source_root_key.to_s]
+        raw = if File.extname(path).eql?(".json")
+          YAML.dump(JSON.parse(File.read(path)))
+        else
+          YAML.load_file(source_path)[source_root_key.to_s]
+        end
         Content.new raw
       end
     end
@@ -88,7 +92,11 @@ module GAI18n
     def content
       @content ||= begin
         raw_content = if File.exist?(path)
-          raw_content = YAML.load_file(path)
+          raw_content = if File.extname(path).eql?(".json")
+            YAML.dump(JSON.parse(File.read(path)))
+          else
+            YAML.load_file(path)
+          end
           raw_content.respond_to?(:[]) ? raw_content[root_key.to_s] : {}
         else
           {}
