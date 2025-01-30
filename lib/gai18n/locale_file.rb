@@ -1,6 +1,5 @@
 module GAI18n
   class LocaleFile
-    require 'json'
     extend Forwardable
 
     attr_reader :locale, :assistant_id, :skip_keys
@@ -81,11 +80,7 @@ module GAI18n
 
     def source_content
       @source_content ||= begin
-        raw = if File.extname(source_path).eql?(".json")
-          YAML.dump(JSON.load(source_path))
-        else
-          YAML.load_file(source_path)[source_root_key.to_s]
-        end
+        raw = YAML.load_file(source_path)[source_root_key.to_s]
         Content.new raw
       end
     end
@@ -93,11 +88,7 @@ module GAI18n
     def content
       @content ||= begin
         raw_content = if File.exist?(path)
-          raw_content = if File.extname(path).eql?(".json")
-            YAML.dump(JSON.load(path))
-          else
-            YAML.load_file(path)
-          end
+          raw_content = if FileYAML.load_file(path)
           raw_content.respond_to?(:[]) ? raw_content[root_key.to_s] : {}
         else
           {}
